@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Question Set",
+    "description": "A text passage and set of corresponding questions",
+    "type": "object",
+    "properties": {
+        "passage": {
+            "description": "A text passage to read",
+            "type": "string"
+        }
+    },
+    "required": ["id"]
+}
