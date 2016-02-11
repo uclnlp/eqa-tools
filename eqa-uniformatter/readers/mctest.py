@@ -32,23 +32,24 @@ def parse_mctest_questions(question_list, ans_tabs):
 	questions = []
 	for i in range(0, len(question_list), 5):
 		qdict = {}
-		# parse question
-		qcols = question_list[i].split(':')
-		qdict['question'] = {
-			'type' : qcols[0],
-			'text' : qcols[1]
-		}
 		# parse answers
 		answers = []
 		correct_answer = ans_tabs[int(i / 5)]
 		for j in range(1,5):
 			label = labels[j-1]
 			answer = {
-				'id' : label,
+				'label' : label,
 				'correct' : label == correct_answer,
 				'text' : question_list[i+j]
 			}
 			answers.append(answer)
-		qdict['answer-candidates'] = answers
-		questions.append({ 'question-set' : qdict})
+
+		# parse question
+		qcols = question_list[i].split(':')
+		qdict['question'] = {
+			'question-type' : qcols[0],
+			'text' : qcols[1],
+			'answer-candidates' : answers
+		}
+		questions.append(qdict)
 	return questions
