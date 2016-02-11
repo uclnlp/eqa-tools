@@ -7,6 +7,12 @@
         "passage": {
             "description": "A text passage to read",
             "type": "string"
+        },
+        "questions": {
+            "type": "array",
+            "items": {
+                "type": "question"
+            }
         }
     },
     "required": ["id"]
